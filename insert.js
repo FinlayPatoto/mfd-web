@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     <nav>
     <div class="main-header">
         <ul class="menu">
-            <li class="" data-sub=""><a href="index.html"><img src="images/home-icon.png" alt="Home"  class="max-size" /></a></li>
+            <li class="" data-sub=""><a href="index.html"><img src="images/home.png" alt="Home"  class="max-size" /></a></li>
             <li class="menu__item" data-sub="product"><a href="products.html">Products</a></li>
             <li class="menu__item" data-sub="developer"><a href="#">Development</a></li>
             <li class="menu__item" data-sub="company"><a href="#">About</a></li>
