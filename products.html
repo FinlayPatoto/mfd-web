@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MadFinn Development Co.</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css'>
+    <link rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css'>
+    <style>
+        .site__wrapper {
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+            padding-top: 1.5em;
+            padding-bottom: 1.5em;
+        }
+
+        .site__info {
+            clear: both;
+            display: block;
+            font-variant: small-caps;
+            letter-spacing: 2px;
+            padding-top: 1.5em;
+            padding-bottom: 1.5em;
+            text-align: center;
+        }
+
+        .grid {
+            float: none;
+            width: 100%;
+            padding-left: 0.2em;
+            padding-right: 0.2em;
+            padding-bottom: 0.4em;
+        }
+
+        @media screen and (min-width: 40.063em) {
+            .grid {
+                float: left;
+                width: 33.333%;
+            }
+        }
+
+        .card__image {
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            display: block;
+            min-height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card__image>img {
+            display: block;
+            margin-bottom: 0;
+            -webkit-transition: all 0.25s ease-in-out;
+            -moz-transition: all 0.25s ease-in-out;
+            -ms-transition: all 0.25s ease-in-out;
+            -o-transition: all 0.25s ease-in-out;
+            transition: all 0.25s ease-in-out;
+        }
+
+        .card__image:hover>img {
+            -webkit-transform: scale(1.2);
+            -moz-transform: scale(1.2);
+            -ms-transform: scale(1.2);
+            -o-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+
+        .card__title {
+            color: white;
+            display: inline-block;
+            font-family: "Montserrat";
+            font-size: 1.5em;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.75em;
+            text-decoration: none;
+            -webkit-transition: all 0.3s ease-out;
+            -moz-transition: all 0.3s ease-out;
+            transition: all 0.3s ease-out;
+        }
+
+        .card__title:hover {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .card__overlay {
+            content: "";
+            bottom: 0;
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .card__overlay--indigo {
+            background-image: linear-gradient(to bottom, rgba(92, 107, 192, 0.1), rgba(92, 107, 192, 0.8));
+            z-index: 2;
+        }
+
+        .card__overlay--blue {
+            background-image: linear-gradient(to bottom, rgba(41, 182, 246, 0.1), rgba(41, 182, 246, 0.8));
+            z-index: 2;
+        }
+
+        .card__overlay-content {
+            position: absolute;
+            bottom: 0;
+            padding: 1.5em;
+            z-index: 3;
+        }
+
+        .card__meta {
+            margin: 0;
+            margin-right: -1em;
+            margin-bottom: 0.75em;
+        }
+
+        .card__meta.card__meta--last {
+            margin-bottom: 0;
+        }
+
+        .card__meta li {
+            color: #f8f8f8;
+            display: inline;
+            list-style-type: none;
+            margin-bottom: 0;
+            padding-right: 1em;
+            font-size: 0.85em;
+            font-variant: small-caps;
+            letter-spacing: 1px;
+        }
+
+        .card__meta li:not(:last-child):after {
+            content: "●";
+            font-style: normal;
+            position: relative;
+            color: rgba(255, 255, 255, 0.25);
+            right: -0.6em;
+        }
+
+        .card__meta li>a {
+            color: #f8f8f8;
+        }
+
+
+        /******* Fonts Import Start **********/
+        @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+        /********* Fonts Face CSS End **********/
+
+        /******* Common Element CSS Start ******/
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+
+            font-family: "Roboto", sans-serif;
+            font-size: 16px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        img {
+            max-width: 100%;
+            border: 0px;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            outline: none;
+            transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+        }
+
+        a:focus,
+        a:active,
+        a:visited,
+        a:hover {
+            text-decoration: none;
+            outline: none;
+        }
+
+        a:hover {
+            color: #e73700;
+        }
+
+        h2 {
+            margin-bottom: 48px;
+            padding-bottom: 16px;
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 700;
+            position: relative;
+            text-transform: capitalize;
+        }
+
+        h3 {
+            margin: 0 0 10px;
+            font-size: 28px;
+            line-height: 36px;
+        }
+
+        button {
+            outline: none !important;
+        }
+
+        /******* Common Element CSS End *********/
+
+        /* -------- title style ------- */
+        .line-title {
+            position: relative;
+            width: 400px;
+        }
+
+        .line-title::before,
+        .line-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            border-radius: 2px;
+        }
+
+        .line-title::before {
+            width: 100%;
+            background: #f2f2f2;
+        }
+
+        .line-title::after {
+            width: 32px;
+            background: #e73700;
+        }
+
+        /******* Middle section CSS Start ******/
+        /* -------- Landing page ------- */
+        .game-section {
+            padding: 60px 50px;
+        }
+
+        .game-section .owl-stage {
+            margin: 15px 0;
+            display: flex;
+            display: -webkit-flex;
+        }
+
+        .game-section .item {
+            margin: 0 15px 60px;
+            width: 320px;
+            height: 400px;
+            display: flex;
+            display: -webkit-flex;
+            align-items: flex-end;
+            -webkit-align-items: flex-end;
+            background: #343434 no-repeat center center / cover;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+            cursor: pointer;
+        }
+
+        .game-section .item.active {
+            width: 500px;
+            box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
+            -webkit-box-shadow: 12px 40px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .game-section .item:after {
+            content: "";
+            display: block;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+        }
+
+        .game-section .item-desc {
+            padding: 0 24px 12px;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transform: translateY(calc(100% - 54px));
+            -webkit-transform: translateY(calc(100% - 54px));
+            transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+        }
+
+        .game-section .item.active .item-desc {
+            transform: none;
+            -webkit-transform: none;
+        }
+
+        .game-section .item-desc p {
+            opacity: 0;
+            -webkit-transform: translateY(32px);
+            transform: translateY(32px);
+            transition: all 0.4s ease-in-out 0.2s;
+            -webkit-transition: all 0.4s ease-in-out 0.2s;
+        }
+
+        .game-section .item.active .item-desc p {
+            opacity: 1;
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        .game-section .owl-theme.custom-carousel .owl-dots {
+            margin-top: -20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /******** Middle section CSS End *******/
+
+        /***** responsive css Start ******/
+
+        @media (min-width: 992px) and (max-width: 1199px) {
+            h2 {
+                margin-bottom: 32px;
+            }
+
+            h3 {
+                margin: 0 0 8px;
+                font-size: 24px;
+                line-height: 32px;
+            }
+
+            /* -------- Landing page ------- */
+            .game-section {
+                padding: 50px 30px;
+            }
+
+            .game-section .item {
+                margin: 0 12px 60px;
+                width: 260px;
+                height: 360px;
+            }
+
+            .game-section .item.active {
+                width: 400px;
+            }
+
+            .game-section .item-desc {
+                transform: translateY(calc(100% - 46px));
+                -webkit-transform: translateY(calc(100% - 46px));
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            h2 {
+                margin-bottom: 32px;
+            }
+
+            h3 {
+                margin: 0 0 8px;
+                font-size: 24px;
+                line-height: 32px;
+            }
+
+            .line-title {
+                width: 330px;
+            }
+
+            /* -------- Landing page ------- */
+            .game-section {
+                padding: 50px 30px 40px;
+            }
+
+            .game-section .item {
+                margin: 0 12px 60px;
+                width: 240px;
+                height: 330px;
+            }
+
+            .game-section .item.active {
+                width: 360px;
+            }
+
+            .game-section .item-desc {
+                transform: translateY(calc(100% - 42px));
+                -webkit-transform: translateY(calc(100% - 42px));
+            }
+        }
+
+        @media (max-width: 767px) {
+            body {
+                font-size: 14px;
+            }
+
+            h2 {
+                margin-bottom: 20px;
+            }
+
+            h3 {
+                margin: 0 0 8px;
+                font-size: 19px;
+                line-height: 24px;
+            }
+
+            .line-title {
+                width: 250px;
+            }
+
+            /* -------- Landing page ------- */
+            .game-section {
+                padding: 30px 15px 20px;
+            }
+
+            .game-section .item {
+                margin: 0 10px 40px;
+                width: 200px;
+                height: 280px;
+            }
+
+            .game-section .item.active {
+                width: 270px;
+                box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
+                -webkit-box-shadow: 6px 10px 10px rgba(0, 0, 0, 0.25);
+            }
+
+            .game-section .item-desc {
+                padding: 0 14px 5px;
+                transform: translateY(calc(100% - 42px));
+                -webkit-transform: translateY(calc(100% - 42px));
+            }
+        }
+
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+        @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+        [class*=fontawesome-]:before {
+            font-family: "FontAwesome", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #222;
+            margin: 0;
+            font-family: "Montserrat", sans-serif;
+            font-size: 16px;
+            color: #FFF;
+        }
+
+        .container {
+            max-width: 60em;
+            min-width: 45em;
+            margin: 0 auto;
+            padding: 0 2em;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+        nav li:last-child {
+            padding-right: 0;
+        }
+
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: #000000;
+        }
+
+        #icon {
+            display: inline-block;
+            padding-top: 0.7em;
+            font-size: 2em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        #nav-bg {
+            background: #FD7777;
+            position: fixed;
+            align-items: center;
+            align-content: center;
+            align-self: center;
+            height: 5em;
+            width: 100%;
+            top: 0;
+            z-index: 2;
+        }
+
+        header {
+            position: relative;
+            background-color: #FD7777;
+            padding: 10em 0 8em;
+            z-index: 2;
+        }
+
+        header h1 {
+            font-size: 4em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        #about {
+            background: #E7E3DA;
+            height: 70em;
+            padding: 5em 0;
+        }
+
+        #about p {
+            line-height: 2em;
+            font-size: 1.4em;
+            margin: 0;
+            color: #222;
+        }
+
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding-left: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu a {
+            padding: 20px 20px;
+            display: block;
+            text-decoration: none;
+            color: white;
+        }
+
+        .menu__item {
+            position: relative;
+        }
+
+        .menu__item:hover>.sub-menu-shadow {
+            display: block;
+        }
+
+        .menu .sub-menu-shadow {
+            position: absolute;
+            display: none;
+        }
+
+        .dropdown-holder {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 100%;
+        }
+
+        .dropdown__bg,
+        .dropdown__arrow {
+            position: absolute;
+        }
+
+        .dropdown__arrow {
+            width: 0;
+            height: 0;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent white;
+            top: -20px;
+            opacity: 0;
+            transition: 0.2s ease;
+            pointer-events: none;
+        }
+
+        .dropdown__bg {
+            width: 450px;
+            height: 400px;
+            background-color: white;
+            opacity: 0;
+            transition: 0.25s ease;
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 3;
+        }
+
+        .dropdown__bg-bottom {
+            background-color: #fafafa;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 300px;
+            height: 700px;
+            transition: 0.3s ease;
+        }
+
+        .dropdown__wrap {
+            overflow: hidden;
+            position: absolute;
+            transition: 0.25s ease;
+            z-index: 4;
+        }
+
+        .dropdown__wrap .top-section,
+        .dropdown__wrap .bottom-section {
+            padding: 20px;
+        }
+
+        .dropdown-menu__content {
+            position: absolute;
+            opacity: 0;
+            transition: 0.25s ease;
+            min-width: 200px;
+        }
+
+        .dropdown-menu__content ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .dropdown-menu__content a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .dropdown-menu__content a:hover {
+            color: #333;
+        }
+
+        .dropdown-menu.active .dropdown-menu__content {
+            opacity: 1;
+        }
+
+        #product .dropdown-menu__content {
+            width: 640px;
+        }
+
+        #developer .dropdown-menu__content {
+            width: 400px;
+        }
+
+        .col-2 {
+            display: flex;
+        }
+
+        .col-2>ul,
+        .col-2>div {
+            flex: 1 0 150px;
+        }
+
+        #product .col-2 li {
+            display: block;
+            padding: 20px 20px 10px;
+        }
+
+        #product .col-2 li h6 {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: turquoise;
+        }
+
+        #product .col-2 li .z {
+            color: #999;
+            margin: 0;
+        }
+
+        .menu-title {
+            margin: 0 0 10px;
+            font-size: 18px;
+            color: #2196F3;
+        }
+
+        .info {
+            line-height: 1.7;
+        }
+
+        .subMenuText {
+            color: #999;
+        }
+
+
+        h6 {
+            color: #444;
+            z-index: 8;
+        }
+
+        .z {
+            color: #45a2db;
+            z-index: 8;
+        }
+
+        .first-menu {
+            z-index: 8;
+
+        }
+
+        .third-menu {
+            color: #a1a1a1;
+            z-index: 8;
+        }
+
+        @import 'https://fonts.googleapis.com/css?family=Karla';
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Make the element non-interactive */
+        a.hidden-link {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700|Lato:400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+</head>
+
+<body>
+    
+    <div class="into"></div>
+
+    <header>
+        <div class='container'>
+            <h1>MadFinn Development</h1>
+        </div>
+    </header>
+
+
+
+    <div id='nav-bg'></div>
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js'></script>
+    
+
+    <script type="module" src="insert.js"></script>
+    <script type="module" src="header.js" defer></script>
+
+</body>
+
+</html>
