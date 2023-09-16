@@ -1,5 +1,5 @@
 
-function initializeHeader() {
+export function initializeHeader() {
     var menuItems = [].slice.call(document.querySelectorAll('.menu__item')),
     menuSubs = [].slice.call(document.querySelectorAll('.dropdown-menu')),
     selectedMenu = undefined,
